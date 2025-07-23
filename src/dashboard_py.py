@@ -52,11 +52,15 @@ elif plot_type == "Top Functional Keywords":
     df['Keywords'] = df['Keywords'].fillna('')
     keywords = df['Keywords'].str.split(';').explode().str.strip()
     top_keywords = keywords.value_counts().head(20)
-    fig, ax = plt.subplots()
-    sns.barplot(y=top_keywords.index, x=top_keywords.values, ax=ax)
-    ax.set_xlabel("Count")
+    short_labels = [k[:40] + '...' if len(k) > 40 else k for k in top_keywords.index]
+    fig, ax = plt.subplots(figsize=(8, 6))
+    sns.barplot(y=short_labels, x=top_keywords.values, ax=ax, palette="viridis")
+    ax.set_title("Top 20 Functional Keywords")
+    ax.set_xlabel("Number of Proteins")
     ax.set_ylabel("Keyword")
+    plt.tight_layout()
     st.pyplot(fig)
+
 
 elif plot_type == "Top Subcellular Locations":
     st.subheader("Most Common Subcellular Locations")
