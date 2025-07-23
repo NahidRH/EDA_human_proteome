@@ -67,8 +67,12 @@ elif plot_type == "Top Subcellular Locations":
     df['Subcellular location [CC]'] = df['Subcellular location [CC]'].fillna('')
     locations = df['Subcellular location [CC]'].str.split(';').explode().str.strip()
     top_locations = locations.value_counts().head(10)
-    fig, ax = plt.subplots()
-    sns.barplot(y=top_locations.index, x=top_locations.values, ax=ax)
-    ax.set_xlabel("Count")
+    short_labels = [loc[:40] + '...' if len(loc) > 40 else loc for loc in top_locations.index]
+    fig, ax = plt.subplots(figsize=(8, 6))
+    sns.barplot(y=short_labels, x=top_locations.values, ax=ax, color='skyblue')
+    ax.set_title("Top 10 Subcellular Locations")
+    ax.set_xlabel("Number of Proteins")
     ax.set_ylabel("Location")
+    plt.tight_layout()
     st.pyplot(fig)
+
