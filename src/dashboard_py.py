@@ -16,7 +16,7 @@ import streamlit as st
 @st.cache_data
 def load_data():
       df = pd.read_csv("data/sample_uniprot_100.tsv", sep='\t')
-    return df
+return df
 
 df = load_data()
 st.title("🧬 EDA Dashboard: Human Proteome")
