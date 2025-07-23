@@ -27,6 +27,10 @@ I enjoy combining data and biology. This project helps me showcase some data ana
 Feel free to fork or reach out ✨
 
 ---
+## 🚀 Try it live
+
+You can explore the interactive dashboard here:  
+👉 [Open in Streamlit](https://edahumanproteome-auuywn4cwykk69ypj8gjdi.streamlit.app/))
 
 
 
