@@ -15,7 +15,7 @@ import streamlit as st
 # Load data
 @st.cache_data
 def load_data():
-    df = pd.read_csv("/content/drive/MyDrive/GitHub/eda-human-proteome/data/sample_uniprot_100.tsv", sep='\t')
+      df = pd.read_csv("data/sample_uniprot_100.tsv", sep='\t')
     return df
 
 df = load_data()
