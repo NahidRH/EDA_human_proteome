@@ -45,7 +45,7 @@ if plot_type == "Sequence Length Distribution":
 
 elif plot_type == "Molecular Weight Distribution":
     st.subheader("Molecular Weight of Proteins")
-     st.markdown(
+    st.markdown(
         "This histogram illustrates the distribution of protein molecular weights in Daltons (Da). "
         "Molecular weight is calculated from amino acid composition and affects mobility, structure, and purification."
     )
