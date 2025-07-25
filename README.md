@@ -9,6 +9,8 @@ I wanted to better understand how features like sequence length, molecular weigh
 ## 📌 What I do here:
 
 - Load reviewed human protein data (Swiss-Prot entries from UniProt)
+- Filter for proteins with sequence lengths between 400 and 600 amino acids
+- Randomly sample 100 proteins from the filtered set
 - Perform basic exploratory data analysis (EDA)
 - Visualize:
   - Sequence length distributions
