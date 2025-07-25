@@ -33,6 +33,10 @@ plot_type = st.sidebar.selectbox("Choose a plot:", [
 # --- Main content ---
 if plot_type == "Sequence Length Distribution":
     st.subheader("Protein Sequence Lengths")
+    st.markdown(
+        "This histogram shows the distribution of protein sequence lengths in number of amino acids. "
+        "Longer proteins may have more domains or complex functions, while shorter ones are often regulatory or structural."
+    )
     fig, ax = plt.subplots()
     sns.histplot(df['Length'], bins=50, kde=True, ax=ax)
     ax.set_xlabel("Length (Amino Acids)")
@@ -41,6 +45,10 @@ if plot_type == "Sequence Length Distribution":
 
 elif plot_type == "Molecular Weight Distribution":
     st.subheader("Molecular Weight of Proteins")
+     st.markdown(
+        "This histogram illustrates the distribution of protein molecular weights in Daltons (Da). "
+        "Molecular weight is calculated from amino acid composition and affects mobility, structure, and purification."
+    )
     fig, ax = plt.subplots()
     sns.histplot(df['Mass'], bins=50, kde=True, color='orange', ax=ax)
     ax.set_xlabel("Mass (Daltons)")
@@ -49,6 +57,10 @@ elif plot_type == "Molecular Weight Distribution":
 
 elif plot_type == "Top Functional Keywords":
     st.subheader("Most Common Functional Keywords")
+    st.markdown(
+    "This chart shows the most common functional annotations across the selected human proteins. "
+    "Each keyword describes a known biological role, such as 'receptor' or 'kinase'."
+    )
     df['Keywords'] = df['Keywords'].fillna('')
     keywords = df['Keywords'].str.split(';').explode().str.strip()
     top_keywords = keywords.value_counts().head(20)
@@ -64,6 +76,11 @@ elif plot_type == "Top Functional Keywords":
 
 elif plot_type == "Top Subcellular Locations":
     st.subheader("Most Common Subcellular Locations")
+    st.markdown(
+        "This chart shows the most frequently annotated subcellular locations of proteins. "
+        "Note that a single protein may be associated with multiple locations, such as both nucleus and cytoplasm. "
+        "If subcellular location information is missing in the UniProt entry, that protein is not included in the chart."
+    )
     df['Subcellular location [CC]'] = df['Subcellular location [CC]'].fillna('')
     locations = df['Subcellular location [CC]'].str.split(';').explode().str.strip()
     top_locations = locations.value_counts().head(10)
